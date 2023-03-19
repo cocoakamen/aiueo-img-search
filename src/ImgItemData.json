@@ -1,0 +1,62 @@
+[
+  {
+    "imgSrc": "img/a.png",
+    "title": "a",
+    "tags": ["あお","あいす"]
+  },
+  {
+    "imgSrc": "img/i.png",
+    "title": "い",
+    "tags": ["いちご","いぬ"]
+  },
+  {
+    "imgSrc": "img/u.png",
+    "title": "う",
+    "tags": ["うつくしい","うめ"]
+  },
+  {
+    "imgSrc": "img/e.png",
+    "title" : "え",
+    "tags": ["えがお","えのしま"]
+  },
+  {
+    "imgSrc": "img/o.png",
+    "title": "お",
+    "tags": ["おむれつ","おむすび"]
+  },
+  {
+    "imgSrc": "img/ka.png",
+    "title": "か",
+    "tags": ["からす","かごめ"]
+  },
+  {
+    "imgSrc": "img/ki.png",
+    "title": "き",
+    "tags": ["きつつき","きつね"]
+  },
+  {
+    "imgSrc": "img/ku.png",
+    "title": "く",
+    "tags": ["くつ","くち"]
+  },
+  {
+    "imgSrc": "img/ke.png",
+    "title": "け",
+    "tags": ["けいと","けんこう"]
+  },
+  {
+    "imgSrc": "img/ko.png",
+    "title": "こ",
+    "tags": ["こま"]
+  },
+  {
+    "imgSrc": "img/sa.png",
+    "title": "sa",
+    "tags": ["さんま","さくら"]
+  },
+  {
+    "imgSrc": "img/shi.png",
+    "title": "shi",
+    "tags": ["しまうま","しーくぁーさー"]
+  }
+]
