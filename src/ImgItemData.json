@@ -58,5 +58,70 @@
     "imgSrc": "img/shi.png",
     "title": "shi",
     "tags": ["しまうま","しーくぁーさー"]
+  },
+  {
+    "imgSrc": "img/su.png",
+    "title": "su",
+    "tags": ["すいか","するめ"]
+  },
+  {
+    "imgSrc": "img/se.png",
+    "title": "se",
+    "tags": ["せいろがん","せかい"]
+  },
+  {
+    "imgSrc": "img/so.png",
+    "title": "so",
+    "tags": ["そば","そと"]
+  },
+  {
+    "imgSrc": "img/ta.png",
+    "title": "ta",
+    "tags": ["たんぼ","たにし"]
+  },
+  {
+    "imgSrc": "img/chi.png",
+    "title": "chi",
+    "tags": ["ちず","ちきゅう"]
+  },
+  {
+    "imgSrc": "img/tsu.png",
+    "title": "tsu",
+    "tags": ["つくね","つばき"]
+  },
+  {
+    "imgSrc": "img/te.png",
+    "title": "te",
+    "tags": ["てにす","てながざる"]
+  },
+  {
+    "imgSrc": "img/to.png",
+    "title": "to",
+    "tags": ["とんぼ","とら"]
+  },
+  {
+    "imgSrc": "img/na.png",
+    "title": "na",
+    "tags": ["なす","なっとう"]
+  },
+  {
+    "imgSrc": "img/ni.png",
+    "title": "ni",
+    "tags": ["にわ","にんにく"]
+  },
+  {
+    "imgSrc": "img/nu.png",
+    "title": "nu",
+    "tags": ["ぬいぐるみ","ぬの"]
+  },
+  {
+    "imgSrc": "img/ne.png",
+    "title": "ne",
+    "tags": ["ねこ","ねんど"]
+  },
+  {
+    "imgSrc": "img/no.png",
+    "title": "no",
+    "tags": ["のり","のこぎり"]
   }
 ]
