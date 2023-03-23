@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Tooltip from '@mui/material/Tooltip';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
@@ -10,11 +10,10 @@ export default function ImageListView(props) {
 
   const [open, setOpen] = React.useState(false);
   const [modalImage, setModalImage] = useState({});
+  const [orgImageSize, setOrgImageSize] = useState({});
 
-  const handleOpen = (item, height, width) => {  
+  const handleOpen = (item) => {  
     console.log(item.imgSrc);
-    item.height = height;
-    item.width = width;
     setModalImage(item);
     setOpen(true);
   }
@@ -35,16 +34,24 @@ export default function ImageListView(props) {
     outline: 'none',
   };
 
+  const thmbImgSrc = (tmbImgSrc, imgSrc) => {
+    if ( typeof(tmbImgSrc) !== 'undefined') {
+      return tmbImgSrc;
+    } else {
+      return imgSrc;
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }} >
       <Grid container spacing={2} style={{ height: "140px" }}>
         {props.itemListData.map((item) => (
-
           <Grid item xs={4} md={2} lg={2} key={item.title}  style={{ height: "100%" , textAlign:'center'}}>
             <Tooltip key={item.title} title={item.tags.join(", ")}>
-                <img onClick={(event) => handleOpen(item, event.target.naturalHeight, event.target.naturalWidth)}
-                  src={item.imgSrc}
+                <img onClick={(event) => handleOpen(item)}
+                  src={thmbImgSrc(item.tmbImgSrc, item.imgSrc)}
                   alt={item.title}
+                  className="tmbImage"
                 /> 
             </Tooltip>
           </Grid>
@@ -61,8 +68,9 @@ export default function ImageListView(props) {
               width="100%"
               src={modalImage.imgSrc}
               alt={modalImage.title} 
+              onLoad={(event) => {setOrgImageSize({height:event.target.naturalHeight, width:event.target.naturalWidth})}}
             />
-            Original Size(height*width) : {modalImage.height}*{modalImage.width}
+            Original Size(height*width) : {orgImageSize.height}*{orgImageSize.width}
           </Box>
         </Modal>
     </Box>

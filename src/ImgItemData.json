@@ -1,6 +1,7 @@
 [
   {
     "imgSrc": "img/a.png",
+    "tmbImgSrc": "img/tmb/a.tmb.png",
     "title": "a",
     "tags": ["あお","あいす"]
   },

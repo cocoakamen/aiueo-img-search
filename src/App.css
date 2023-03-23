@@ -2,3 +2,8 @@ img {
   max-height: 100%;
   max-width: 100%;
 }
+
+.tmbImage {
+  max-height: 100px;
+  max-width: 100px;
+}
