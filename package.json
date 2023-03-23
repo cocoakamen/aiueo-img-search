@@ -1,7 +1,8 @@
 {
-  "name": "codespaces-react",
+  "name": "aiueo-img-search",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -18,6 +19,7 @@
   },
   "scripts": {
     "start": "BROWSER=none WDS_SOCKET_PORT=0 react-scripts start",
+    "start-win": "set BROWSER=none && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -4,7 +4,9 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import './App.css';
-
+import IconButton from '@mui/material/IconButton';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 export default function ImageListView(props) {
 
@@ -44,6 +46,20 @@ export default function ImageListView(props) {
 
   return (
     <Box sx={{ flexGrow: 1 }} >
+      <Grid container justifyContent="flex-start" sx={{margin: '10px'}}>
+          <Grid item xs={1}>
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="back" onClick={props.handleBack} 
+                        color={props.backButtonStyle.color} disabled={props.backButtonStyle.disabled}>
+              <ArrowBackIosIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={1}>
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="next" onClick={props.handleNext}  
+                        color={props.nextButtonStyle.color} disabled={props.nextButtonStyle.disabled}>
+              <ArrowForwardIosIcon />
+            </IconButton>
+          </Grid>
+      </Grid>
       <Grid container spacing={2} style={{ height: "140px" }}>
         {props.itemListData.map((item) => (
           <Grid item xs={4} md={2} lg={2} key={item.title}  style={{ height: "100%" , textAlign:'center'}}>
@@ -57,6 +73,8 @@ export default function ImageListView(props) {
           </Grid>
         ))}
       </Grid>
+
+
         <Modal
           open={open}
           onClose={handleClose}
@@ -73,6 +91,10 @@ export default function ImageListView(props) {
             Original Size(height*width) : {orgImageSize.height}*{orgImageSize.width}
           </Box>
         </Modal>
+
+
+
+
     </Box>
   );
 }
