@@ -102,14 +102,15 @@ function App() {
     // Fuseの検索結果からitemだけ取り出す
     const result = fuse.search(inputStr).map((resultItem) => (resultItem.item));
     setSearchResult(result);
-    console.log(JSON.stringify(result));
+    // console.log(JSON.stringify(result));
 
     // 検索文字列長がゼロだったら全部表示、それ以外は、Fuseの検索結果を表示
+    const viewListLength = (inputStr.length === 0) ? ImgItemData.length : result.length;
     setItemListData((inputStr.length === 0) ? getPageData(ImgItemData, 1) : getPageData(result, 1));
     setPageNo(1);
-    setMaxPageNo(Math.ceil(result.length / itemNumPerPage));
+    setMaxPageNo(Math.ceil(viewListLength / itemNumPerPage));
     updateBackButtonStyle(1);
-    updateNextButtonStyle(1, Math.ceil(result.length / itemNumPerPage));
+    updateNextButtonStyle(1, Math.ceil(viewListLength / itemNumPerPage));
   };
 
   return (
