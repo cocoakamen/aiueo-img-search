@@ -100,17 +100,20 @@ function App() {
     }
     const fuse = new Fuse(ImgItemData, fuseOptions)
     // Fuseの検索結果からitemだけ取り出す
-    const result = fuse.search(inputStr).map((resultItem) => (resultItem.item));
+    let result = fuse.search(inputStr).map((resultItem) => (resultItem.item));
+    // inputStrが空白だったら、全件表示
+    if(inputStr === '') {
+      result = ImgItemData;
+    }
     setSearchResult(result);
     // console.log(JSON.stringify(result));
 
-    // 検索文字列長がゼロだったら全部表示、それ以外は、Fuseの検索結果を表示
-    const viewListLength = (inputStr.length === 0) ? ImgItemData.length : result.length;
-    setItemListData((inputStr.length === 0) ? getPageData(ImgItemData, 1) : getPageData(result, 1));
+    // Fuseの検索結果を表示
+    setItemListData(getPageData(result, 1));
     setPageNo(1);
-    setMaxPageNo(Math.ceil(viewListLength / itemNumPerPage));
+    setMaxPageNo(Math.ceil(result.length / itemNumPerPage));
     updateBackButtonStyle(1);
-    updateNextButtonStyle(1, Math.ceil(viewListLength / itemNumPerPage));
+    updateNextButtonStyle(1, Math.ceil(result.length / itemNumPerPage));
   };
 
   return (
