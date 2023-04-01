@@ -1,11 +1,13 @@
 import './App.css';
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 
 import ImgItemData from './ImgItemData.json';
 import ImageListView from './ImageListView';
 import SearchBox from './SearchBox';
 import Fuse from 'fuse.js'
+import QueryParameterURL from './QueyParameterURL';
 
 function App() {
   const itemNumPerPage = 5;
@@ -28,6 +30,8 @@ function App() {
     disabled: maxPageNo===1,
     color: maxPageNo===1 ? 'disable' : 'primary',
   });
+
+  const [searchWord, setSearchWord] = useState('');
 
   const updateBackButtonStyle = (page) => {
     if(page === 1) {
@@ -94,6 +98,7 @@ function App() {
 
   // 検索窓
   const handleSearchBox  = (inputStr) => {
+    setSearchWord(inputStr);
     // titleとtagsの中から探す
     const fuseOptions = {
       keys: ['title', 'tags']
@@ -116,10 +121,28 @@ function App() {
     updateNextButtonStyle(1, Math.ceil(result.length / itemNumPerPage));
   };
 
+  // 初期ロード時にURLパラメータを取得
+  useEffect(() => {
+    // URLのパラメーターを取得
+    const params = new URLSearchParams(window.location.search);
+    const queryWord = params.get('q');
+    console.log(queryWord);
+    if( queryWord !== null) {
+      setSearchWord(queryWord);
+      handleSearchBox(queryWord);
+    }
+  }, []);
+
   return (
     <div className="App">
       <Container  maxWidth="md">
-        <SearchBox handleSearchBox={handleSearchBox}></SearchBox>
+        <SearchBox 
+          handleSearchBox={handleSearchBox} searchWord={searchWord}
+        ></SearchBox>
+        <Stack spacing={2} direction="row">
+        <QueryParameterURL searchWord={searchWord}></QueryParameterURL>
+        </Stack>
+
         <ImageListView 
           itemListData={itemListData || ImgItemData} handleBack={handleBack} handleNext={handleNext}
           backButtonStyle={backButtonStyle} nextButtonStyle={nextButtonStyle}

@@ -17,6 +17,7 @@ export default function SearchBox(props) {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Images"
         inputProps={{ 'aria-label': 'search images' }}
+        value={props.searchWord}
         onChange={(event) => props.handleSearchBox(event.target.value)}
       />
 
