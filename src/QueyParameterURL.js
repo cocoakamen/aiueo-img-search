@@ -46,7 +46,7 @@ export default function QueryParameterURL(props) {
           disableFocusListener
           disableHoverListener
           disableTouchListener
-          title={linkURL}
+          title={'copied! ' + linkURL}
         >
 
           <IconButton type="button" onClick={handleURLCopy}>
