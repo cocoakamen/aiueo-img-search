@@ -1,16 +1,28 @@
 import './App.css';
 import React, { useEffect, useState} from "react";
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import ImgItemData from './ImgItemData.json';
 import ImageListView from './ImageListView';
 import SearchBox from './SearchBox';
 import Fuse from 'fuse.js'
-import QueryParameterURL from './QueyParameterURL';
+import PreSetSearchButton from './PreSetSearchButton';
 
 function App() {
   const itemNumPerPage = 5;
+
+  const theme = createTheme({
+    palette: {
+      secondary: {
+        light: '#9e9e9e',
+        main: '#757575',
+        dark: '#616161',
+        contrastText: '#fff',
+      },
+    },
+  });
+
   const [maxPageNo, setMaxPageNo] = useState(Math.ceil(ImgItemData.length / itemNumPerPage));
   let [pageNo, setPageNo] = useState(1);
 
@@ -121,6 +133,13 @@ function App() {
     updateNextButtonStyle(1, Math.ceil(result.length / itemNumPerPage));
   };
 
+  // 検索文字列指定
+  const handlePresetSearch = (inputStr) => {
+    setSearchWord(inputStr);
+    handleSearchBox(inputStr);
+    console.log(inputStr);
+  }
+
   // 初期ロード時にURLパラメータを取得
   useEffect(() => {
     // URLのパラメーターを取得
@@ -134,21 +153,23 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+      <div className="App">
+      <ThemeProvider theme={theme}>
       <Container  maxWidth="md">
-        <SearchBox 
-          handleSearchBox={handleSearchBox} searchWord={searchWord}
-        ></SearchBox>
-        <Stack spacing={2} direction="row">
-        <QueryParameterURL searchWord={searchWord}></QueryParameterURL>
-        </Stack>
+          <SearchBox 
+            handleSearchBox={handleSearchBox} searchWord={searchWord}
+          ></SearchBox>
+
+        <PreSetSearchButton handlePresetSearch={handlePresetSearch}></PreSetSearchButton>
 
         <ImageListView 
           itemListData={itemListData || ImgItemData} handleBack={handleBack} handleNext={handleNext}
           backButtonStyle={backButtonStyle} nextButtonStyle={nextButtonStyle}
         ></ImageListView>
       </Container>
+    </ThemeProvider>
     </div>
+    
   );
 }
 

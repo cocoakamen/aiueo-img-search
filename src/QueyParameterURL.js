@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import AddLinkIcon from '@mui/icons-material/AddLink';
+import IconButton from '@mui/material/IconButton';
 
 export default function QueryParameterURL(props) {
   const [linkURL, setLinkURL] = useState('');
@@ -14,8 +15,10 @@ export default function QueryParameterURL(props) {
   useEffect(() => {
     // 現在のURLを取得
     const currentURL = window.location.href.split('?')[0];
-    // URLのパラメーターを追加
-    const newURL = currentURL + '?q=' + props.searchWord;
+    let newURL = currentURL;
+    if( props.searchWord !== '' ) {
+      newURL = newURL + '?q=' + props.searchWord;
+    }
     setLinkURL(newURL);
 
   }, [props.searchWord]);
@@ -45,12 +48,15 @@ export default function QueryParameterURL(props) {
           disableTouchListener
           title={linkURL}
         >
-          <Button 
-            variant="contained" color="success" size="small"
-            onClick={handleURLCopy}
-          >Copy Link</Button>
+
+          <IconButton type="button" onClick={handleURLCopy}>
+            <AddLinkIcon />
+          </IconButton>
+
         </Tooltip>
       </div>
+
+      
     </ClickAwayListener>
   );
 }
